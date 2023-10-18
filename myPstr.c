@@ -7,18 +7,15 @@
  */
 void mohanned_pstr(stack_t **head, unsigned int count)
 {
-	stack_t *h;
-	(void)count;
+	stack_t *temp = *head;
 
-	h = *head;
-	while (h)
+	(void)count;
+	while (temp)
 	{
-		if (h->n > 127 || h->n <= 0)
-		{
+		if (temp->n > 127 || temp->n <= 0)
 			break;
-		}
-		printf("%c", h->n);
-		h = h->next;
+		printf("%c", temp->n);
+		temp = temp->next;
 	}
 	printf("\n");
 }

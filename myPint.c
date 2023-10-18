@@ -12,7 +12,7 @@ void mohanned_pint(stack_t **head, unsigned int count)
 		fclose(moh.file);
 		free(moh.content);
 		mohanned_freestack(*head);
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
 	printf("%d\n", (*head)->n);
 }

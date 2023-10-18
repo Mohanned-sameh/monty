@@ -6,7 +6,7 @@
  */
 void mohanned_pop(stack_t **head, unsigned int count)
 {
-	stack_t *h;
+	stack_t *temp = *head;
 
 	if (*head == NULL)
 	{
@@ -14,9 +14,8 @@ void mohanned_pop(stack_t **head, unsigned int count)
 		fclose(moh.file);
 		free(moh.content);
 		mohanned_freestack(*head);
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
-	h = *head;
-	*head = h->next;
-	free(h);
+	*head = temp->next;
+	free(temp);
 }

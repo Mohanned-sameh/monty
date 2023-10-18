@@ -6,21 +6,17 @@
  */
 void mohanned_rotl(stack_t **head, unsigned int count)
 {
-	stack_t *tmp = *head, *amount;
+	stack_t *temp = *head, *counts;
 
 	(void)count;
 	if (*head == NULL || (*head)->next == NULL)
-	{
 		return;
-	}
-	amount = (*head)->next;
-	amount->prev = NULL;
-	while (tmp->next != NULL)
-	{
-		tmp = tmp->next;
-	}
-	tmp->next = *head;
+	counts = (*head)->next;
+	counts->prev = NULL;
+	while (temp->next != NULL)
+		temp = temp->next;
+	temp->next = *head;
 	(*head)->next = NULL;
-	(*head)->prev = tmp;
-	(*head) = amount;
+	(*head)->prev = temp;
+	(*head) = counts;
 }

@@ -18,29 +18,23 @@ void mohanned_queue(stack_t **head, unsigned int count)
  */
 void mohanned_addqueue(stack_t **head, int n)
 {
-	stack_t *new_node, *amount;
+	stack_t *new = malloc(sizeof(stack_t)), *counts = *head;
 
-	amount = *head;
-	new_node = malloc(sizeof(stack_t));
-	if (new_node == NULL)
-	{
+	if (new == NULL)
 		printf("Error\n");
-	}
-	new_node->n = n;
-	new_node->next = NULL;
-	if (amount)
+	new->n = n;
+	new->next = NULL;
+	if (counts)
+		while (counts->next)
+			counts = counts->next;
+	if (!counts)
 	{
-		while (amount->next)
-			amount = amount->next;
-	}
-	if (!amount)
-	{
-		*head = new_node;
-		new_node->prev = NULL;
+		*head = new;
+		new->prev = NULL;
 	}
 	else
 	{
-		amount->next = new_node;
-		new_node->prev = amount;
+		counts->next = new;
+		new->prev = counts;
 	}
 }

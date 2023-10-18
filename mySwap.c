@@ -6,13 +6,12 @@
  */
 void mohanned_swap(stack_t **head, unsigned int count)
 {
-	stack_t *h;
-	int len = 0, amount;
+	stack_t *temp = *head;
+	int len = 0, counts;
 
-	h = *head;
-	while (h)
+	while (temp)
 	{
-		h = h->next;
+		temp = temp->next;
 		len++;
 	}
 	if (len < 2)
@@ -21,10 +20,10 @@ void mohanned_swap(stack_t **head, unsigned int count)
 		fclose(moh.file);
 		free(moh.content);
 		mohanned_freestack(*head);
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
-	h = *head;
-	amount = h->n;
-	h->n = h->next->n;
-	h->next->n = amount;
+	temp = *head;
+	counts = temp->n;
+	temp->n = temp->next->n;
+	temp->next->n = counts;
 }

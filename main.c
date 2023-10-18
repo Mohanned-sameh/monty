@@ -1,5 +1,4 @@
 #include "monty.h"
-#include <stdio.h>
 moh_t moh = {NULL, NULL, NULL, 0};
 /**
  * main - monty code interpreter
@@ -10,7 +9,6 @@ moh_t moh = {NULL, NULL, NULL, 0};
 int main(int argc, char *argv[])
 {
 	char *content;
-	FILE *file;
 	size_t size = 0;
 	ssize_t read_line = 1;
 	stack_t *stack = NULL;
@@ -19,19 +17,18 @@ int main(int argc, char *argv[])
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
-	file = fopen(argv[1], "r");
-	moh.file = file;
-	if (!file)
+	moh.file = fopen(argv[1], "r");
+	if (!moh.file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
 	while (read_line > 0)
 	{
 		content = NULL;
-		read_line = getline(&content, &size, file);
+		read_line = getline(&content, &size, moh.file);
 		moh.content = content;
 		count++;
 		if (read_line > 0)
@@ -41,6 +38,6 @@ int main(int argc, char *argv[])
 		free(content);
 	}
 	mohanned_freestack(stack);
-	fclose(file);
+	fclose(moh.file);
 	return (0);
 }
