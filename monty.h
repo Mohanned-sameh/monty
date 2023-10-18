@@ -1,5 +1,6 @@
 #ifndef MONTY_H
 #define MONTY_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -7,6 +8,7 @@
 #include <fcntl.h>
 #include <string.h>
 #include <ctype.h>
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -22,6 +24,7 @@ typedef struct stack_s
 	struct stack_s *prev;
 	struct stack_s *next;
 } stack_t;
+
 /**
  * struct moh_s - variables -args, file, line content
  * @arg: value
@@ -30,14 +33,6 @@ typedef struct stack_s
  * @lifi: flag change stack <-> queue
  * Description: carries values through the program
  */
-typedef struct moh_s
-{
-	char *arg;
-	FILE *file;
-	char *content;
-	int lifi;
-} moh_t;
-extern moh_t moh;
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -51,11 +46,21 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+typedef struct moh_s
+{
+	char *arg;
+	FILE *file;
+	char *content;
+	int lifi;
+} moh_t;
+extern moh_t moh;
+
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 void mohanned_push(stack_t **head, unsigned int count);
 void mohanned_pall(stack_t **head, unsigned int count);
 void mohanned_pint(stack_t **head, unsigned int count);
-int mohanned_execute(char *content, stack_t **head, unsigned int count, FILE *file);
+int mohanned_execute(char *content, stack_t **stack, unsigned int count);
 void mohanned_freestack(stack_t *head);
 void mohanned_pop(stack_t **head, unsigned int count);
 void mohanned_swap(stack_t **head, unsigned int count);
@@ -73,4 +78,5 @@ void mohanned_addnode(stack_t **head, int n);
 void mohanned_addqueue(stack_t **head, int n);
 void mohanned_queue(stack_t **head, unsigned int count);
 void mohanned_stack(stack_t **head, unsigned int count);
+
 #endif

@@ -3,11 +3,10 @@
  * mohanned_execute - executes the opcode
  * @stack: head linked list - stack
  * @count: line_count
- * @file: poiner to monty file
  * @content: line content
  * Return: 1;
  */
-int mohanned_execute(char *content, stack_t **stack, unsigned int count, FILE *file)
+int mohanned_execute(char *content, stack_t **stack, unsigned int count)
 {
 	instruction_t operators[] = {
 		{"push", mohanned_push}, {"pall", mohanned_pall},
@@ -18,8 +17,7 @@ int mohanned_execute(char *content, stack_t **stack, unsigned int count, FILE *f
 		{"mod", mohanned_mod}, {"pchar", mohanned_pchar},
 		{"pstr", mohanned_pstr}, {"rotl", mohanned_rotl},
 		{"rotr", mohanned_rotr}, {"queue", mohanned_queue},
-		{"stack", mohanned_stack}, {NULL, NULL}
-		};
+		{"stack", mohanned_stack}, {NULL, NULL}};
 	unsigned int i = 0;
 	char *operator;
 
@@ -39,10 +37,9 @@ int mohanned_execute(char *content, stack_t **stack, unsigned int count, FILE *f
 	if (operator && operators[i].opcode == NULL)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", count, operator);
-		fclose(file);
 		free(content);
 		mohanned_freestack(*stack);
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
 	return (1);
 }
