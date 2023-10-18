@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 		count++;
 		if (read_line > 0)
 		{
-			mohanned_execute(content, &stack, count, file);
+			mohanned_execute(content, &stack, count);
 		}
 		free(content);
 	}
