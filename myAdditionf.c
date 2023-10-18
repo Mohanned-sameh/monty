@@ -6,13 +6,12 @@
  */
 void mohanned_add(stack_t **head, unsigned int count)
 {
-	stack_t *h;
+	stack_t *temp = *head;
 	int len = 0, amount;
 
-	h = *head;
-	while (h)
+	while (temp)
 	{
-		h = h->next;
+		temp = temp->next;
 		len++;
 	}
 	if (len < 2)
@@ -21,11 +20,11 @@ void mohanned_add(stack_t **head, unsigned int count)
 		fclose(moh.file);
 		free(moh.content);
 		mohanned_freestack(*head);
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
-	h = *head;
-	amount = h->n + h->next->n;
-	h->next->n = amount;
-	*head = h->next;
-	free(h);
+	temp = *head;
+	amount = temp->n + temp->next->n;
+	temp->next->n = amount;
+	*head = temp->next;
+	free(temp);
 }

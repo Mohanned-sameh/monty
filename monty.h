@@ -58,7 +58,7 @@ extern moh_t moh;
 
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 void mohanned_push(stack_t **head, unsigned int count);
-void mohanned_pall(stack_t **head, unsigned int count);
+void mohanned_pall(stack_t **head);
 void mohanned_pint(stack_t **head, unsigned int count);
 int mohanned_execute(char *content, stack_t **stack, unsigned int count);
 void mohanned_freestack(stack_t *head);
@@ -71,12 +71,12 @@ void mohanned_div(stack_t **head, unsigned int count);
 void mohanned_mul(stack_t **head, unsigned int count);
 void mohanned_mod(stack_t **head, unsigned int count);
 void mohanned_pchar(stack_t **head, unsigned int count);
-void mohanned_pstr(stack_t **head, unsigned int count);
-void mohanned_rotl(stack_t **head, unsigned int count);
-void mohanned_rotr(stack_t **head, unsigned int count);
-void mohanned_addnode(stack_t **head, int n);
-void mohanned_addqueue(stack_t **head, int n);
-void mohanned_queue(stack_t **head, unsigned int count);
-void mohanned_stack(stack_t **head, unsigned int count);
+void mohanned_pstr(stack_t **head);
+void mohanned_rotl(stack_t **head);
+void mohanned_rotr(stack_t **head);
+void mohanned_addnode(stack_t **head, int data);
+void mohanned_addqueue(stack_t **head, int data);
+void mohanned_queue(void);
+void mohanned_stack(void);
 
 #endif

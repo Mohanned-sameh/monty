@@ -7,13 +7,12 @@
  */
 void mohanned_mod(stack_t **head, unsigned int count)
 {
-	stack_t *h;
+	stack_t *temp = *head;
 	int len = 0, amount;
 
-	h = *head;
-	while (h)
+	while (temp)
 	{
-		h = h->next;
+		temp = temp->next;
 		len++;
 	}
 	if (len < 2)
@@ -24,8 +23,8 @@ void mohanned_mod(stack_t **head, unsigned int count)
 		mohanned_freestack(*head);
 		exit(EXIT_FAILURE);
 	}
-	h = *head;
-	if (h->n == 0)
+	temp = *head;
+	if (temp->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", count);
 		fclose(moh.file);
@@ -33,8 +32,8 @@ void mohanned_mod(stack_t **head, unsigned int count)
 		mohanned_freestack(*head);
 		exit(EXIT_FAILURE);
 	}
-	amount = h->next->n % h->n;
-	h->next->n = amount;
-	*head = h->next;
-	free(h);
+	amount = temp->next->n % temp->n;
+	temp->next->n = amount;
+	*head = temp->next;
+	free(temp);
 }

@@ -2,24 +2,22 @@
 /**
  * mohanned_addnode - add node to the head stack
  * @head: head of the stack
- * @n: new_value
+ * @data: new_value
  */
-void mohanned_addnode(stack_t **head, int n)
+void mohanned_addnode(stack_t **head, int data)
 {
 
-	stack_t *new_node, *amount;
+	stack_t *new = malloc(sizeof(stack_t)), *ptr = *head;
 
-	amount = *head;
-	new_node = malloc(sizeof(stack_t));
-	if (new_node == NULL)
+	if (new == NULL)
 	{
 		printf("Error\n");
 		exit(0);
 	}
-	if (amount)
-		amount->prev = new_node;
-	new_node->n = n;
-	new_node->next = *head;
-	new_node->prev = NULL;
-	*head = new_node;
+	if (new)
+		new->prev = new;
+	new->n = data;
+	new->next = *head;
+	new->prev = NULL;
+	*head = new;
 }

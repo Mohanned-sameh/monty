@@ -2,25 +2,22 @@
 /**
  *mohanned_rotr- rotates the stack to the bottom
  *@head: stack head
- *@count: line_number
  */
-void mohanned_rotr(stack_t **head, unsigned int count)
+void mohanned_rotr(stack_t **head)
 {
-	stack_t *copy;
+	stack_t *temp = *head;
 
-	(void)count;
-	copy = *head;
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		return;
 	}
-	while (copy->next)
+	while (temp->next)
 	{
-		copy = copy->next;
+		temp = temp->next;
 	}
-	copy->next = *head;
-	copy->prev->next = NULL;
-	copy->prev = NULL;
-	(*head)->prev = copy;
-	(*head) = copy;
+	temp->next = *head;
+	temp->prev->next = NULL;
+	temp->prev = NULL;
+	(*head)->prev = temp;
+	(*head) = temp;
 }
