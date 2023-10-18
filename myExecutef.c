@@ -19,12 +19,13 @@ int mohanned_execute(char *content, stack_t **stack, unsigned int count)
 		{"rotr", mohanned_rotr}, {"queue", mohanned_queue},
 		{"stack", mohanned_stack}, {NULL, NULL}};
 	unsigned int i = 0;
-	char *operator = strtok(content, " \n\t");
+	char *operator;
 
-	if (!operator)
+	operator = strtok(content, " \n\t");
+	if (operator && operator[0] == '#')
 		return (0);
 	moh.arg = strtok(NULL, " \n\t");
-	while (operators[i].opcode != NULL)
+	while (operators[i].opcode && operator)
 	{
 		if (strcmp(operator, operators[i].opcode) == 0)
 		{
@@ -33,7 +34,7 @@ int mohanned_execute(char *content, stack_t **stack, unsigned int count)
 		}
 		i++;
 	}
-	if (operators[i].opcode == NULL)
+	if (operator && operators[i].opcode == NULL)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", count, operator);
 		free(content);
