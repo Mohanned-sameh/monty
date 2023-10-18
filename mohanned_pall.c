@@ -2,6 +2,7 @@
 /**
  * mohanned_pall - prints the stack
  * @head: stack head
+ * @count: line_number
  */
 void mohanned_pall(stack_t **head, unsigned int count)
 {
