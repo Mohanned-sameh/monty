@@ -7,23 +7,24 @@
  */
 void mohanned_pchar(stack_t **head, unsigned int count)
 {
-	stack_t *temp = *head;
+	stack_t *h;
 
-	if (!temp)
+	h = *head;
+	if (!h)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", count);
 		fclose(moh.file);
 		free(moh.content);
 		mohanned_freestack(*head);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
-	if (temp->n > 127 || temp->n < 0)
+	if (h->n > 127 || h->n < 0)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", count);
 		fclose(moh.file);
 		free(moh.content);
 		mohanned_freestack(*head);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
-	printf("%c\n", temp->n);
+	printf("%c\n", h->n);
 }

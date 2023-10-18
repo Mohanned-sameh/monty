@@ -6,12 +6,13 @@
  */
 void mohanned_sub(stack_t **head, unsigned int count)
 {
-	stack_t *temp = *head;
-	int count, num;
+	stack_t *amount;
+	int sus, nodes;
 
-	for (num = 0; temp != NULL; num++)
-		temp = temp->next;
-	if (num < 2)
+	amount = *head;
+	for (nodes = 0; amount != NULL; nodes++)
+		amount = amount->next;
+	if (nodes < 2)
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short\n", count);
 		fclose(moh.file);
@@ -19,9 +20,9 @@ void mohanned_sub(stack_t **head, unsigned int count)
 		mohanned_freestack(*head);
 		exit(EXIT_FAILURE);
 	}
-	temp = *head;
-	count = temp->next->n - temp->n;
-	temp->next->n = count;
-	*head = temp->next;
-	free(temp);
+	amount = *head;
+	sus = amount->next->n - amount->n;
+	amount->next->n = sus;
+	*head = amount->next;
+	free(amount);
 }

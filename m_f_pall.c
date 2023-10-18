@@ -2,16 +2,19 @@
 /**
  * mohanned_pall - prints the stack
  * @head: stack head
+ * @count: line_number
  */
-void mohanned_pall(stack_t **head)
+void mohanned_pall(stack_t **head, unsigned int count)
 {
-	stack_t *temp = *head;
+	stack_t *h;
 
-	if (temp == NULL)
+	(void)count;
+	h = *head;
+	if (h == NULL)
 		return;
-	while (temp)
+	while (h)
 	{
-		printf("%d\n", temp->n);
-		temp = temp->next;
+		printf("%d\n", h->n);
+		h = h->next;
 	}
 }

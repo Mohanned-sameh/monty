@@ -5,12 +5,13 @@
  */
 void mohanned_freestack(stack_t *head)
 {
-	stack_t *ptr = head;
+	stack_t *amount;
 
+	amount = head;
 	while (head)
 	{
-		ptr = head->next;
+		amount = head->next;
 		free(head);
-		head = ptr;
+		head = amount;
 	}
 }

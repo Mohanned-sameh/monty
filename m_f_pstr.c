@@ -3,17 +3,22 @@
  * mohanned_pstr - prints the string starting at the top of the stack,
  * followed by a new
  * @head: stack head
+ * @count: line_number
  */
-void mohanned_pstr(stack_t **head)
+void mohanned_pstr(stack_t **head, unsigned int count)
 {
-	stack_t *temp = *head;
+	stack_t *h;
+	(void)count;
 
-	while (temp)
+	h = *head;
+	while (h)
 	{
-		if (temp->n > 127 || temp->n <= 0)
+		if (h->n > 127 || h->n <= 0)
+		{
 			break;
-		printf("%c", temp->n);
-		temp = temp->next;
+		}
+		printf("%c", h->n);
+		h = h->next;
 	}
 	printf("\n");
 }

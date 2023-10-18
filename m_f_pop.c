@@ -6,7 +6,7 @@
  */
 void mohanned_pop(stack_t **head, unsigned int count)
 {
-	stack_t *temp = *head;
+	stack_t *h;
 
 	if (*head == NULL)
 	{
@@ -16,6 +16,7 @@ void mohanned_pop(stack_t **head, unsigned int count)
 		mohanned_freestack(*head);
 		exit(EXIT_FAILURE);
 	}
-	*head = temp->next;
-	free(temp);
+	h = *head;
+	*head = h->next;
+	free(h);
 }
